@@ -1,7 +1,7 @@
-﻿using BikesApp.Core;
-using BikesApp.Interfaces;
+﻿using SztuderWiniecki.BikesApp.Core;
+using SztuderWiniecki.BikesApp.Interfaces;
 
-namespace BikesApp.DAOMock2
+namespace SztuderWiniecki.BikesApp.DAOMock2
 {
     public class DAOMock : IDAO
     {

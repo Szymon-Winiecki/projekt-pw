@@ -1,7 +1,7 @@
-﻿using BikesApp.Core;
-using BikesApp.Interfaces;
+﻿using SztuderWiniecki.BikesApp.Core;
+using SztuderWiniecki.BikesApp.Interfaces;
 
-namespace BikesApp.DAOMock1.BO
+namespace SztuderWiniecki.BikesApp.DAOMock1.BO
 {
     public class Bike : IBike
     {

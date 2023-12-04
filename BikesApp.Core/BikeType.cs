@@ -1,4 +1,4 @@
-﻿namespace BikesApp.Core
+﻿namespace SztuderWiniecki.BikesApp.Core
 {
     public enum BikeType
     {

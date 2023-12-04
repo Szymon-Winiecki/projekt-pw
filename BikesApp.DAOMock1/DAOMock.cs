@@ -1,12 +1,12 @@
-﻿using BikesApp.Core;
-using BikesApp.Interfaces;
+﻿using SztuderWiniecki.BikesApp.Core;
+using SztuderWiniecki.BikesApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BikesApp.DAOMock1
+namespace SztuderWiniecki.BikesApp.DAOMock1
 {
     public class DAOMock : IDAO
     {

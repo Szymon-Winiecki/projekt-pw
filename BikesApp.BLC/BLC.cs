@@ -1,7 +1,7 @@
-﻿using BikesApp.Interfaces;
+﻿using SztuderWiniecki.BikesApp.Interfaces;
 using System.Reflection;
 
-namespace BikesApp.BLC
+namespace SztuderWiniecki.BikesApp.BLC
 {
     public class BLC
     {

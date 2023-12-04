@@ -1,7 +1,7 @@
-﻿using BikesApp.BLC;
-using BikesApp.Interfaces;
+﻿using SztuderWiniecki.BikesApp.BLC;
+using SztuderWiniecki.BikesApp.Interfaces;
 
-namespace BikesApp
+namespace SztuderWiniecki.BikesApp
 {
     internal class Program
     {

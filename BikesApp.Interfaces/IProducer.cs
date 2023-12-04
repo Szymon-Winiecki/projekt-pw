@@ -1,4 +1,4 @@
-﻿namespace BikesApp.Interfaces
+﻿namespace SztuderWiniecki.BikesApp.Interfaces
 {
     public interface IProducer
     {

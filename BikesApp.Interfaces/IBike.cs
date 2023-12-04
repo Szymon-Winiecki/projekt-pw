@@ -1,11 +1,11 @@
-﻿using BikesApp.Core;
+﻿using SztuderWiniecki.BikesApp.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BikesApp.Interfaces
+namespace SztuderWiniecki.BikesApp.Interfaces
 {
     public interface IBike
     {

@@ -1,6 +1,6 @@
-﻿using BikesApp.Interfaces;
+﻿using SztuderWiniecki.BikesApp.Interfaces;
 
-namespace BikesApp.DAOMock2.BO
+namespace SztuderWiniecki.BikesApp.DAOMock2.BO
 {
     public class Producer : IProducer
     {
