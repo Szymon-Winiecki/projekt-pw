@@ -3,17 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikesApp", "BikesApp\BikesApp.csproj", "{941966D0-1BEC-42F0-9EAC-11901032ED79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikesApp", "BikesApp\BikesApp.csproj", "{941966D0-1BEC-42F0-9EAC-11901032ED79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikesApp.Core", "BikesApp.Core\BikesApp.Core.csproj", "{32BB4800-F541-456B-ABA1-6B02061B11CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikesApp.Core", "BikesApp.Core\BikesApp.Core.csproj", "{32BB4800-F541-456B-ABA1-6B02061B11CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikesApp.Interfaces", "BikesApp.Interfaces\BikesApp.Interfaces.csproj", "{B2F2F2F9-E86B-44C3-8118-CE21AD01AA16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikesApp.Interfaces", "BikesApp.Interfaces\BikesApp.Interfaces.csproj", "{B2F2F2F9-E86B-44C3-8118-CE21AD01AA16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikesApp.DAOMock1", "BikesApp.DAOMock1\BikesApp.DAOMock1.csproj", "{371CFFF7-5C39-4458-BA75-FBC3FEE323A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikesApp.DAOMock1", "BikesApp.DAOMock1\BikesApp.DAOMock1.csproj", "{371CFFF7-5C39-4458-BA75-FBC3FEE323A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikesApp.BLC", "BikesApp.BLC\BikesApp.BLC.csproj", "{AEF94AA2-43E8-4DB5-8C8C-48790B76420D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikesApp.BLC", "BikesApp.BLC\BikesApp.BLC.csproj", "{AEF94AA2-43E8-4DB5-8C8C-48790B76420D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikesApp.DAOMock2", "BikesApp.DAOMock2\BikesApp.DAOMock2.csproj", "{02AA76EF-3AE6-42AA-96EE-2A31F54EA5D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikesApp.DAOMock2", "BikesApp.DAOMock2\BikesApp.DAOMock2.csproj", "{02AA76EF-3AE6-42AA-96EE-2A31F54EA5D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikesApp.WebUI", "BikesApp.WebUI\BikesApp.WebUI.csproj", "{56A9951E-8642-4399-84C8-07CFE52DE764}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikesApp.DAO_EF_SQLite", "BikesApp.DAO_EF_SQLite\BikesApp.DAO_EF_SQLite.csproj", "{5A37865E-A2D0-4BBE-9BC2-566311F02E21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{02AA76EF-3AE6-42AA-96EE-2A31F54EA5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02AA76EF-3AE6-42AA-96EE-2A31F54EA5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02AA76EF-3AE6-42AA-96EE-2A31F54EA5D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A9951E-8642-4399-84C8-07CFE52DE764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A9951E-8642-4399-84C8-07CFE52DE764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A9951E-8642-4399-84C8-07CFE52DE764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A9951E-8642-4399-84C8-07CFE52DE764}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A37865E-A2D0-4BBE-9BC2-566311F02E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A37865E-A2D0-4BBE-9BC2-566311F02E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A37865E-A2D0-4BBE-9BC2-566311F02E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A37865E-A2D0-4BBE-9BC2-566311F02E21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
