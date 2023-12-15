@@ -49,5 +49,10 @@ namespace SztuderWiniecki.BikesApp.DAOMock1
         {
             return producers;
         }
+
+        public IBike? GetBike(int ID)
+        {
+            return bikes.First(b => b.ID == ID);
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace SztuderWiniecki.BikesApp.Interfaces
     {
         IEnumerable<IProducer> GetAllProducers();
         IEnumerable<IBike> GetAllBikes();
+        IBike? GetBike(int ID);
 
         IProducer CreateNewProducer();
         IBike CreateNewBike();
