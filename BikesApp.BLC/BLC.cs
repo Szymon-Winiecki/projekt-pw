@@ -38,12 +38,42 @@ namespace SztuderWiniecki.BikesApp.BLC
             }
         }
 
+        public void SaveChanges()
+        {
+            dao.SaveChanges();
+        }
+
         public IEnumerable<IProducer> GetProducers() 
         {
             return dao.GetAllProducers();
         }
 
-        public IEnumerable<IBike> GetBikes() 
+        public IProducer? GetProducer(int ID)
+        {
+            return dao.GetProducer(ID);
+        }
+
+        public IProducer CreateProducer()
+        {
+            return dao.CreateNewProducer();
+        }
+
+        public IProducer? UpdateProducer(IProducer producer)
+        {
+            return dao.UpdateProducer(producer);
+        }
+
+        public IProducer? RemoveProducer(int ID)
+        {
+            return dao.RemoveProducer(ID);
+        }
+
+        public IProducer? AddProducer(IProducer producer)
+        {
+            return dao.AddProducer(producer);
+        }
+
+        public IEnumerable<IBike> GetBikes()
         {
             return dao.GetAllBikes();
         }
@@ -51,6 +81,26 @@ namespace SztuderWiniecki.BikesApp.BLC
         public IBike? GetBike(int ID) 
         {
             return dao.GetBike(ID);
+        }
+
+        public IBike? RemoveBike(int ID)
+        {
+            return dao.RemoveBike(ID);
+        }
+
+        public IBike CreateBike()
+        {
+            return dao.CreateNewBike();
+        }
+
+        public IBike? UpdateBike(IBike bike) 
+        {
+            return dao.UpdateBike(bike);
+        }
+
+        public IBike? AddBike(IBike bike)
+        {
+            return dao.AddBike(bike);
         }
     }
 }

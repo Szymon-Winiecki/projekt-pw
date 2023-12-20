@@ -1,14 +1,14 @@
-﻿@model IEnumerable<SztuderWiniecki.BikesApp.Interfaces.IBike>
+﻿@model IEnumerable<SztuderWiniecki.BikesApp.Interfaces.IProducer>
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Index";
 }
 
 @{
     Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>View</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -23,10 +23,7 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReleaseYear)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
+                @Html.DisplayNameFor(model => model.Adress)
             </th>
             <th></th>
         </tr>
@@ -41,15 +38,12 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReleaseYear)
+                @Html.DisplayFor(modelItem => item.Adress)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { item.ID }) |
-                @Html.ActionLink("Details", "Details", new { item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { item.ID })
+                    @Html.ActionLink("Edit", "Edit", new { item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { item.ID })
             </td>
         </tr>
 }

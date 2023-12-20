@@ -15,5 +15,16 @@ namespace SztuderWiniecki.BikesApp.Interfaces
         int ReleaseYear {  get; set; }
 
         BikeType Type { get; set; }
+
+        IBike CopyFrom(IBike bike)
+        {
+            ID = bike.ID;
+            Name = bike.Name;
+            Producer = bike.Producer;
+            ReleaseYear = bike.ReleaseYear;
+            Type = bike.Type;
+
+            return this;
+        }
     }
 }
