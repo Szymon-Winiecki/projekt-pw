@@ -25,7 +25,13 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         // GET: BikesController/Details/5
         public ActionResult Details(int id)
         {
-            return View(_blc.GetBike(id));
+            IBike? bike = _blc.GetBike(id);
+            if (bike == null)
+            {
+                return NotFound();
+            }
+            
+            return View(bike);
         }
 
         // GET: BikesController/Create
@@ -71,20 +77,22 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, [Bind("ID,Name,Producer,ReleaseYear,Type")] ProxyBike bike)
         {
-            // cannot bind to interface, so we create proxy object and rewrite its values to DAO object
-            IBike daoBike = _blc.CreateBike();
-            daoBike.ID = bike.ID;
-            daoBike.Name = bike.Name;
-            daoBike.Producer = bike.Producer;
-            daoBike.ReleaseYear = bike.ReleaseYear;
-            daoBike.Type = bike.Type;
-
-
-            if (id != daoBike.ID)
+            if (id != bike.ID)
             {
                 return NotFound();
             }
-            System.Diagnostics.Debug.WriteLine("ModelState.IsValid: " + ModelState.IsValid);
+
+            // cannot bind to interface, so we create proxy object and rewrite its values to DAO object
+            IBike? daoBike = _blc.GetBike(bike.ID);
+            if(daoBike == null)
+            {
+                return NotFound();
+            }
+
+            daoBike.CopyFrom(bike);
+            
+
+            ModelState.Remove("Producer");
             if (ModelState.IsValid)
             {
                 try
