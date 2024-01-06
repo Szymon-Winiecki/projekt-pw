@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,11 +78,11 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
 
         public IEnumerable<IBike> GetAllBikes()
         {
-            return db.Bikes;
+            return db.Bikes.Include(b => b._producer);
         }
         public IBike? GetBike(int ID)
         {
-            return db.Bikes.FirstOrDefault(b => b.ID == ID);
+            return db.Bikes.Include(b => b._producer).FirstOrDefault(b => b.ID == ID);
         }
         public IBike CreateNewBike()
         {
