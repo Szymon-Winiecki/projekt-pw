@@ -69,13 +69,15 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
                 return NotFound();
             }
 
+            ViewBag.Producers = _blc.GetProducers();
+
             return View(bike);
         }
 
         // POST: BikesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, [Bind("ID,Name,Producer,ReleaseYear,Type")] ProxyBike bike)
+        public ActionResult Edit(int id, [Bind("ID,Name,ReleaseYear,Type")] ProxyBike bike, [Bind("Producer")] int Producer)
         {
             if (id != bike.ID)
             {
@@ -90,6 +92,14 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
             }
 
             daoBike.CopyFrom(bike);
+
+            IProducer? producer = _blc.GetProducer(Producer);
+            if(producer == null)
+            {
+                return NotFound();
+            }
+
+            daoBike.Producer = producer;
             
 
             ModelState.Remove("Producer");
