@@ -37,23 +37,54 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         // GET: BikesController/Create
         public ActionResult Create()
         {
+            ViewBag.Producers = _blc.GetProducers();
             return View(_blc.CreateBike());
         }
 
         // POST: BikesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([Bind("ID,Name,ReleaseYear,Type")] ProxyBike bike, [Bind("Producer")] int Producer)
         {
-            try
+            // cannot bind to interface, so we create proxy object and rewrite its values to DAO object
+            IBike? daoBike = _blc.CreateBike();
+
+            daoBike.CopyFrom(bike);
+
+            IProducer? producer = _blc.GetProducer(Producer);
+            if (producer == null)
             {
+                return NotFound();
+            }
+
+            daoBike.Producer = producer;
+
+
+            ModelState.Remove("Producer");
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _blc.AddBike(daoBike);
+                    _blc.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    System.Diagnostics.Debug.WriteLine("DbUpdateConcurrencyException");
+                    /*if (!BikeExists(bike.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }*/
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(bike);
         }
+
 
         // GET: BikesController/Edit/5
         public ActionResult Edit(int? id)
