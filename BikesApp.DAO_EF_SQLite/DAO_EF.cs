@@ -61,7 +61,7 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
         }
         public IProducer? RemoveProducer(int ID)
         {
-            return (IProducer?)db.Producers.Remove(db.Producers.Find(ID)).Entity;
+            return db.Producers.Remove(db.Producers.Find(ID)).Entity;
         }
 
         public IProducer? AddProducer(IProducer producer)
@@ -101,7 +101,7 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
         }
         public IBike? RemoveBike(int ID)
         {
-            return (IBike?)db.Bikes.Remove(db.Bikes.Find(ID));
+            return db.Bikes.Remove(db.Bikes.Find(ID)).Entity;
         }
 
         public IBike? AddBike(IBike bike)
