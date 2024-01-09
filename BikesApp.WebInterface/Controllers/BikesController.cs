@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SztuderWiniecki.BikesApp.BLC;
+using SztuderWiniecki.BikesApp.Core;
 using SztuderWiniecki.BikesApp.Interfaces;
 using SztuderWiniecki.BikesApp.WebInterface.ProxyModels;
 
@@ -38,6 +39,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         public ActionResult Create()
         {
             ViewBag.Producers = _blc.GetProducers();
+            ViewBag.Types = Enum.GetNames(typeof(BikeType));
             return View(_blc.CreateBike());
         }
 
@@ -101,6 +103,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
             }
 
             ViewBag.Producers = _blc.GetProducers();
+            ViewBag.Types = Enum.GetNames(typeof(BikeType));
 
             return View(bike);
         }
@@ -159,23 +162,36 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         }
 
         // GET: BikesController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            IBike? bike = _blc.GetBike((int)id);
+            if (bike == null)
+            {
+                return NotFound();
+            }
+
+            return View(bike);
         }
 
         // POST: BikesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, [Bind("ID,Name,ReleaseYear,Type,Producer")] ProxyBike bike)
         {
+            _blc.RemoveBike(id);
+            _blc.SaveChanges();
             try
             {
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return NotFound();
             }
         }
     }
