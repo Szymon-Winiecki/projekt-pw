@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
+             x:Class="BikesApp.MAUIInterface.ProducersIndexPage"
+             Title="ProducersIndexPage">
+    <VerticalStackLayout>
+        <ListView ItemsSource="{Binding Producers}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <HorizontalStackLayout x:DataType="viewmodel:ProducerViewModel">
+                            <Label Text="{Binding Name}" WidthRequest="400" />
+                            <Label Text="{Binding Address}" WidthRequest="400" />
+                        </HorizontalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,Auto">
+            <Label Grid.Column="0" Grid.Row="0" Text="Name" />
+            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+
+            <Label Grid.Column="0" Grid.Row="1" Text="Address" />
+            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding Address}" />
+        </Grid>
+        <HorizontalStackLayout>
+            <Button Text="New Producer" />
+            <Button Text="Save Producer" />
+            <Button Text="Cance" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
