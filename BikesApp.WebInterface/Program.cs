@@ -12,8 +12,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            string libraryName = System.Configuration.ConfigurationManager.AppSettings["DAOLibraryName"];
-            builder.Services.AddSingleton<BLC.BLC>(blc => new BLC.BLC(libraryName));
+            builder.Services.AddSingleton<BLC.BLC>(blc => BLC.BLC.GetInstance());
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();

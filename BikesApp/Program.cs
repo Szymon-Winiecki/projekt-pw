@@ -9,8 +9,7 @@ namespace SztuderWiniecki.BikesApp
         {
             Console.WriteLine("Hello, World!");
 
-            string libraryName = System.Configuration.ConfigurationManager.AppSettings["DAOLibraryName"];
-            BLC.BLC blc = new BLC.BLC(libraryName);
+            BLC.BLC blc = BLC.BLC.GetInstance();
 
             foreach(IProducer p in blc.GetProducers()) 
             {

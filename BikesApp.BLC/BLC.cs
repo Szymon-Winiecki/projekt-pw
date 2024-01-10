@@ -5,10 +5,14 @@ namespace SztuderWiniecki.BikesApp.BLC
 {
     public class BLC
     {
+        private static BLC? instance;
+
         private IDAO dao;
 
-        public BLC(string libraryName)
+        private BLC()
         {
+            string libraryName = System.Configuration.ConfigurationManager.AppSettings["DAOLibraryName"];
+
             Type? typeToCreate = null;
 
             Assembly assembly = Assembly.UnsafeLoadFrom(libraryName);
@@ -25,17 +29,14 @@ namespace SztuderWiniecki.BikesApp.BLC
             dao = (IDAO)Activator.CreateInstance(typeToCreate, null);
         }
 
-        public static IEnumerable<Type> GetLoadableTypes(Assembly assembly)
+        public static BLC GetInstance()
         {
-            if (assembly == null) throw new ArgumentNullException(nameof(assembly));
-            try
+            if (instance == null)
             {
-                return assembly.GetTypes();
+                instance = new BLC();
             }
-            catch (ReflectionTypeLoadException e)
-            {
-                return e.Types.Where(t => t != null);
-            }
+
+            return instance;
         }
 
         public void SaveChanges()
