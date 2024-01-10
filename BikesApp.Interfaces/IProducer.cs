@@ -2,16 +2,16 @@
 {
     public interface IProducer
     {
-        int ID { get; set; }
+        int Id { get; set; }
         string Name { get; set; }
-        string Adress { get; set; }
+        string Address { get; set; }
 
 
         IProducer CopyFrom(IProducer producer)
         {
-            ID = producer.ID;
+            Id = producer.Id;
             Name = producer.Name;
-            Adress = producer.Adress;
+            Address = producer.Address;
 
             return this;
         }

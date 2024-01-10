@@ -17,16 +17,16 @@ namespace SztuderWiniecki.BikesApp.DAOMock1
         {
             producers = new List<IProducer>()
             {
-                new BO.Producer() {ID=1, Name="Giant"},
-                new BO.Producer() {ID=2, Name="B'Twin"},
-                new BO.Producer() {ID=3, Name="Romet"}
+                new BO.Producer() {Id=1, Name="Giant"},
+                new BO.Producer() {Id=2, Name="B'Twin"},
+                new BO.Producer() {Id=3, Name="Romet"}
             };
 
             bikes = new List<IBike>()
             {
-                new BO.Bike() {ID=1, Producer=producers[0], Name="Propel Advanced SL", ReleaseYear=2018, Type=BikeType.Road},
-                new BO.Bike() {ID=2, Producer=producers[1], Name="Rockrider ST 540", ReleaseYear=2017, Type=BikeType.Mountain},
-                new BO.Bike() {ID=3, Producer=producers[2], Name="ASPRE 1", ReleaseYear=2022, Type=BikeType.Gravel}
+                new BO.Bike() {Id=1, Producer=producers[0], Name="Propel Advanced SL", ReleaseYear=2018, Type=BikeType.Road},
+                new BO.Bike() {Id=2, Producer=producers[1], Name="Rockrider ST 540", ReleaseYear=2017, Type=BikeType.Mountain},
+                new BO.Bike() {Id=3, Producer=producers[2], Name="ASPRE 1", ReleaseYear=2022, Type=BikeType.Gravel}
             };
         }
 
@@ -52,7 +52,7 @@ namespace SztuderWiniecki.BikesApp.DAOMock1
 
         public IBike? GetBike(int ID)
         {
-            return bikes.First(b => b.ID == ID);
+            return bikes.First(b => b.Id == ID);
         }
     }
 }

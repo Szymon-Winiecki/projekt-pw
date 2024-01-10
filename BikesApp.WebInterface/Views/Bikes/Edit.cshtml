@@ -41,7 +41,7 @@
                 <select class="form-control selectpicker" asp-for="Producer" name="Producer" data-live-search="true">
                     @foreach (var producer in ViewBag.Producers)
                     {
-                        <option value="@producer.ID" selected="@(producer.ID == Model.Producer.ID)">@producer.Name</option>
+                        <option value="@producer.Id" selected="@(producer.Id == Model.Producer.Id)">@producer.Name</option>
                     }
                 </select>
                 <span asp-validation-for="Producer" class="text-danger"></span>

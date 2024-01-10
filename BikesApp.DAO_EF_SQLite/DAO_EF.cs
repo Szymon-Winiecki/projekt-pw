@@ -19,8 +19,8 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
 
             if (!db.Producers.Any())
             {
-                db.Producers.Add(new BO.Producer() { Name = "SQLite Producer 1", Adress = "Lorem ipsum" });
-                db.Producers.Add(new BO.Producer() { Name = "SQLite Producer 2", Adress = "Lorem ipsum" });
+                db.Producers.Add(new BO.Producer() { Name = "SQLite Producer 1", Address = "Lorem ipsum" });
+                db.Producers.Add(new BO.Producer() { Name = "SQLite Producer 2", Address = "Lorem ipsum" });
                 db.SaveChanges();
             }
 
@@ -41,7 +41,7 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
         }
         public IProducer? GetProducer(int ID)
         {
-            return db.Producers.FirstOrDefault(p => p.ID == ID);
+            return db.Producers.FirstOrDefault(p => p.Id == ID);
         }
         public IProducer CreateNewProducer()
         {
@@ -82,7 +82,7 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
         }
         public IBike? GetBike(int ID)
         {
-            return db.Bikes.Include(b => b._producer).FirstOrDefault(b => b.ID == ID);
+            return db.Bikes.Include(b => b._producer).FirstOrDefault(b => b.Id == ID);
         }
         public IBike CreateNewBike()
         {

@@ -9,7 +9,7 @@ namespace SztuderWiniecki.BikesApp.Interfaces
 {
     public interface IBike
     {
-        int ID { get; set;  }
+        int Id { get; set;  }
         string Name { get; set; }
         IProducer Producer { get; set; }
         int ReleaseYear {  get; set; }
@@ -18,7 +18,7 @@ namespace SztuderWiniecki.BikesApp.Interfaces
 
         IBike CopyFrom(IBike bike)
         {
-            ID = bike.ID;
+            Id = bike.Id;
             Name = bike.Name;
             Producer = bike.Producer;
             ReleaseYear = bike.ReleaseYear;

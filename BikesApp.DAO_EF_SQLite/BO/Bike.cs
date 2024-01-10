@@ -6,7 +6,7 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite.BO
 {
     public class Bike : IBike
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public Producer _producer {  get; set; }

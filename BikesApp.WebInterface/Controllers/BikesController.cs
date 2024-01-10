@@ -46,7 +46,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         // POST: BikesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("ID,Name,ReleaseYear,Type")] ProxyBike bike, [Bind("Producer")] int Producer)
+        public ActionResult Create([Bind("Id,Name,ReleaseYear,Type")] ProxyBike bike, [Bind("Producer")] int Producer)
         {
             // cannot bind to interface, so we create proxy object and rewrite its values to DAO object
             IBike? daoBike = _blc.CreateBike();
@@ -111,15 +111,15 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         // POST: BikesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, [Bind("ID,Name,ReleaseYear,Type")] ProxyBike bike, [Bind("Producer")] int Producer)
+        public ActionResult Edit(int id, [Bind("Id,Name,ReleaseYear,Type")] ProxyBike bike, [Bind("Producer")] int Producer)
         {
-            if (id != bike.ID)
+            if (id != bike.Id)
             {
                 return NotFound();
             }
 
             // cannot bind to interface, so we create proxy object and rewrite its values to DAO object
-            IBike? daoBike = _blc.GetBike(bike.ID);
+            IBike? daoBike = _blc.GetBike(bike.Id);
             if(daoBike == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
                 catch (DbUpdateConcurrencyException)
                 {
                     System.Diagnostics.Debug.WriteLine("DbUpdateConcurrencyException");
-                    /*if (!BikeExists(bike.ID))
+                    /*if (!BikeExists(bike.Id))
                     {
                         return NotFound();
                     }
@@ -181,7 +181,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         // POST: BikesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, [Bind("ID,Name,ReleaseYear,Type,Producer")] ProxyBike bike)
+        public ActionResult Delete(int id, [Bind("Id,Name,ReleaseYear,Type,Producer")] ProxyBike bike)
         {
             _blc.RemoveBike(id);
             _blc.SaveChanges();

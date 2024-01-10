@@ -48,7 +48,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         // POST: ProducersController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("ID, Name, Adress")] ProxyProducer producer)
+        public ActionResult Create([Bind("Id, Name, Address")] ProxyProducer producer)
         {
             if (ModelState.IsValid)
             {
@@ -81,15 +81,15 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         // POST: ProducersController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, [Bind("ID, Name, Adress")] ProxyProducer producer)
+        public ActionResult Edit(int id, [Bind("Id, Name, Address")] ProxyProducer producer)
         {
-            if (id != producer.ID)
+            if (id != producer.Id)
             {
                 return NotFound();
             }
 
             // cannot bind to interface, so create proxy object and rewrite its values to DAO object
-            IProducer? daoProducer = _blc.GetProducer(producer.ID);
+            IProducer? daoProducer = _blc.GetProducer(producer.Id);
             if (daoProducer == null)
             {
                 return NotFound();
@@ -140,7 +140,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         // POST: ProducersController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, [Bind("ID, Name, Adress")] ProxyProducer producer)
+        public ActionResult Delete(int id, [Bind("Id, Name, Address")] ProxyProducer producer)
         {
             _blc.RemoveProducer(id);
             _blc.SaveChanges();

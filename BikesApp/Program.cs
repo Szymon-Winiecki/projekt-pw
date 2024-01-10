@@ -13,14 +13,14 @@ namespace SztuderWiniecki.BikesApp
 
             foreach(IProducer p in blc.GetProducers()) 
             {
-                Console.WriteLine($"{p.ID}: {p.Name}");
+                Console.WriteLine($"{p.Id}: {p.Name}");
             }
 
             Console.WriteLine("------------------------------");
 
             foreach (IBike b in blc.GetBikes())
             {
-                Console.WriteLine($"{b.ID}: {b.Producer.Name} {b.Name} {b.ReleaseYear} {b.Type}");
+                Console.WriteLine($"{b.Id}: {b.Producer.Name} {b.Name} {b.ReleaseYear} {b.Type}");
             }
         }
     }

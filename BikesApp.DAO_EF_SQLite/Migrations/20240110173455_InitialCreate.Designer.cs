@@ -10,7 +10,7 @@ using SztuderWiniecki.BikesApp.DAO_EF_SQLite;
 namespace BikesApp.DAO_EF_SQLite.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231204145212_InitialCreate")]
+    [Migration("20240110173455_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace BikesApp.DAO_EF_SQLite.Migrations
 
             modelBuilder.Entity("SztuderWiniecki.BikesApp.DAO_EF_SQLite.BO.Bike", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -34,23 +34,23 @@ namespace BikesApp.DAO_EF_SQLite.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("_producerID")
+                    b.Property<int>("_producerId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("_producerID");
+                    b.HasIndex("_producerId");
 
                     b.ToTable("Bikes");
                 });
 
             modelBuilder.Entity("SztuderWiniecki.BikesApp.DAO_EF_SQLite.BO.Producer", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Adress")
+                    b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -58,7 +58,7 @@ namespace BikesApp.DAO_EF_SQLite.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Producers");
                 });
@@ -67,7 +67,7 @@ namespace BikesApp.DAO_EF_SQLite.Migrations
                 {
                     b.HasOne("SztuderWiniecki.BikesApp.DAO_EF_SQLite.BO.Producer", "_producer")
                         .WithMany()
-                        .HasForeignKey("_producerID")
+                        .HasForeignKey("_producerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
