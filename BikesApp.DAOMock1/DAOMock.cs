@@ -30,6 +30,16 @@ namespace SztuderWiniecki.BikesApp.DAOMock1
             };
         }
 
+        public IBike? AddBike(IBike bike)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IProducer? AddProducer(IProducer producer)
+        {
+            throw new NotImplementedException();
+        }
+
         public IBike CreateNewBike()
         {
             return new BO.Bike();
@@ -53,6 +63,36 @@ namespace SztuderWiniecki.BikesApp.DAOMock1
         public IBike? GetBike(int ID)
         {
             return bikes.First(b => b.Id == ID);
+        }
+
+        public IProducer? GetProducer(int ID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IBike? RemoveBike(int ID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IProducer? RemoveProducer(int ID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IBike? UpdateBike(IBike bike)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IProducer? UpdateProducer(IProducer producer)
+        {
+            throw new NotImplementedException();
         }
     }
 }
