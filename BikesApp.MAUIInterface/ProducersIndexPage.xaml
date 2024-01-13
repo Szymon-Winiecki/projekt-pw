@@ -9,16 +9,19 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <HorizontalStackLayout x:DataType="viewmodel:ProducerViewModel">
+                        <HorizontalStackLayout>
                             <Label Text="{Binding Name}" WidthRequest="400" />
                             <Label Text="{Binding Address}" WidthRequest="400" />
+                            <Button Text="Details" WidthRequest="400" Command="{Binding ShowDetailsCommand}" CommandParameter="{Binding Id}" />
                         </HorizontalStackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,Auto">
+        <Grid RowDefinitions="Auto,Auto" 
+              ColumnDefinitions="Auto,Auto"
+              BindingContext="{Binding ProducerEdit}">
             <Label Grid.Column="0" Grid.Row="0" Text="Name" />
             <Entry Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
 
@@ -26,9 +29,9 @@
             <Entry Grid.Column="1" Grid.Row="1" Text="{Binding Address}" />
         </Grid>
         <HorizontalStackLayout>
-            <Button Text="New Producer" />
-            <Button Text="Save Producer" />
-            <Button Text="Cance" />
+            <Button Text="New Producer" Command="{Binding CreateNewProducerCommand}"/>
+            <Button Text="Save Producer" Command="{Binding SaveProducerCommand}" />
+            <Button Text="Cancel"  Command="{Binding CancelCommand}"/>
         </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

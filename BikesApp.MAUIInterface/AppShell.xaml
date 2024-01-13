@@ -13,9 +13,9 @@
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage" />
         <ShellContent
-        Title="Producers Catalog"
-        ContentTemplate="{DataTemplate local:ProducersIndexPage}"
-        Route="ProducersIndex" />
+            Title="Producers Catalog"
+            ContentTemplate="{DataTemplate local:ProducersIndexPage}"
+            Route="ProducersIndex" />
         <ShellContent
             Title="Bikes Catalog"
             ContentTemplate="{DataTemplate local:BikesIndexPage}"
