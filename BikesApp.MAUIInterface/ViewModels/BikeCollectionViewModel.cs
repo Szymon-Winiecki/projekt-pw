@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using BikesApp.MAUIInterface;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         [RelayCommand]
         private async void CreateNewBike(BikeViewModel bike)
         {
-            //await Shell.Current.GoToAsync(nameof(BikeCreatePage));
+            await Shell.Current.GoToAsync(nameof(BikeCreatePage));
         }
     }
 }

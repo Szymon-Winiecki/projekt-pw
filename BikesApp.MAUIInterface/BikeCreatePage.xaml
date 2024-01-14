@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:interfaces="clr-namespace:SztuderWiniecki.BikesApp.Core;assembly=BikesApp.Core"
+             xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
+             x:Class="BikesApp.MAUIInterface.BikeCreatePage"
+             Title="BikeCreatePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:EnumToIntConverter x:Key="EnumToIntConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout>
+
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" 
+          ColumnDefinitions="Auto,Auto">
+            <Label Grid.Column="0" Grid.Row="0" Text="Name" />
+            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding Bike.Name}" />
+
+            <Label Grid.Column="0" Grid.Row="1" Text="Type" />
+            <Picker Grid.Column="1" Grid.Row="1" SelectedIndex="{Binding Bike.Type, Converter={StaticResource EnumToIntConverter}, ConverterParameter={x:Type interfaces:BikeType}}" ItemsSource="{Binding Types}">
+            </Picker>
+
+            <Label Grid.Column="0" Grid.Row="2" Text="ReleaseYear" />
+            <Entry Grid.Column="1" Grid.Row="2" Text="{Binding Bike.ReleaseYear}" />
+
+            <Label Grid.Column="0" Grid.Row="3" Text="Producer" />
+            <Picker Grid.Column="1" Grid.Row="3" SelectedItem="{Binding Bike.Producer}" ItemsSource="{Binding Producers}" ItemDisplayBinding="{Binding Name}">
+            </Picker>
+        </Grid>
+        <HorizontalStackLayout>
+            <Button Text="Create" Command="{Binding SaveCommand}" />
+            <Button Text="Cancel" Command="{Binding CancelCommand}" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

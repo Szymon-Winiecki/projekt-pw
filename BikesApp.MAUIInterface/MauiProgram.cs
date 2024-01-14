@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.Logging;
 using SztuderWiniecki.BikesApp.MAUIInterface.ViewModels;
 
 namespace BikesApp.MAUIInterface
@@ -10,6 +11,7 @@ namespace BikesApp.MAUIInterface
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -28,9 +30,21 @@ namespace BikesApp.MAUIInterface
             builder.Services.AddSingleton<BikeCollectionViewModel>();
             builder.Services.AddSingleton<BikesIndexPage>();
 
+            builder.Services.AddTransient<BikeDetailsViewModel>();
+            builder.Services.AddTransient<BikeDetailsPage>();
+
+            builder.Services.AddTransient<BikeCreateViewModel>();
+            builder.Services.AddTransient<BikeCreatePage>();
+
+            builder.Services.AddTransient<BikeEditViewModel>();
+            builder.Services.AddTransient<BikeEditPage>();
 
             Routing.RegisterRoute(nameof(ProducerCreatePage), typeof(ProducerCreatePage));
             Routing.RegisterRoute(nameof(ProducerDetailsPage), typeof(ProducerDetailsPage));
+
+            Routing.RegisterRoute(nameof(BikeDetailsPage), typeof(BikeDetailsPage));
+            Routing.RegisterRoute(nameof(BikeCreatePage), typeof(BikeCreatePage));
+            Routing.RegisterRoute(nameof(BikeEditPage), typeof(BikeEditPage));
 
 #if DEBUG
             builder.Logging.AddDebug();

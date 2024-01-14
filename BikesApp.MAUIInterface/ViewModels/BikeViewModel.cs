@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using BikesApp.MAUIInterface;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -40,12 +41,21 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         [RelayCommand]
         private async void ShowDetails(int id)
         {
-            System.Diagnostics.Debug.WriteLine($"ShowDetails({id})");
             var query = new ShellNavigationQueryParameters
             {
                 { "id", id }
             };
-            //await Shell.Current.GoToAsync(nameof(BikeDetailsPage), query);
+            await Shell.Current.GoToAsync(nameof(BikeDetailsPage), query);
+        }
+
+        [RelayCommand]
+        private async void EditBike(int id)
+        {
+            var query = new ShellNavigationQueryParameters
+            {
+                { "id", id }
+            };
+            await Shell.Current.GoToAsync(nameof(BikeEditPage), query);
         }
     }
 }
