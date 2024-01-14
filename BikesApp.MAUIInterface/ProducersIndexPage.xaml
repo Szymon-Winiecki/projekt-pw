@@ -4,7 +4,10 @@
              xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
              x:Class="BikesApp.MAUIInterface.ProducersIndexPage"
              Title="ProducersIndexPage">
+
     <VerticalStackLayout>
+        <Button Text="Reload" Command="{Binding ReloadCommand}" />
+
         <ListView ItemsSource="{Binding Producers}">
             <ListView.ItemTemplate>
                 <DataTemplate>

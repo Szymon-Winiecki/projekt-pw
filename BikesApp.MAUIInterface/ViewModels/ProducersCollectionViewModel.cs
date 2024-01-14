@@ -50,6 +50,16 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         [ObservableProperty]
         private bool isEditing;
 
+        [RelayCommand]
+        public void Reload()
+        {
+            producers.Clear();
+
+            foreach (var producer in blc.GetProducers())
+            {
+                producers.Add(new ProducerViewModel(producer));
+            }
+        }
 
         [RelayCommand(CanExecute = nameof(CanCreateNewProducer))]
         private async void CreateNewProducer()
