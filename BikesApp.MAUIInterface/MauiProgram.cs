@@ -25,6 +25,10 @@ namespace BikesApp.MAUIInterface
             builder.Services.AddTransient<ProducerDetailsViewModel>();
             builder.Services.AddTransient<ProducerDetailsPage>();
 
+            builder.Services.AddSingleton<BikeCollectionViewModel>();
+            builder.Services.AddSingleton<BikesIndexPage>();
+
+
             Routing.RegisterRoute(nameof(ProducerCreatePage), typeof(ProducerCreatePage));
             Routing.RegisterRoute(nameof(ProducerDetailsPage), typeof(ProducerDetailsPage));
 
