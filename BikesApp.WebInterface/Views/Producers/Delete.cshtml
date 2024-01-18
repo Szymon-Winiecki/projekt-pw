@@ -36,7 +36,12 @@
     </dl>
     
     <form asp-action="Delete">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <button type="submit" value="Delete" class="btn btn-danger me-2">
+            <i class="me-2 bi bi-trash"></i>
+            <span>
+                Delete
+            </span>
+        </button>
         <a asp-action="Index">Back to List</a>
     </form>
 </div>

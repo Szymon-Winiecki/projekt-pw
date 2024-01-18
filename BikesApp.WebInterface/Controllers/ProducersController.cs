@@ -17,9 +17,18 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         }
 
         // GET: ProducersController
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(_blc.GetProducers());
+            var producers = _blc.GetProducers();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                producers = producers.Where(s => s.Name!.Contains(searchString, System.StringComparison.CurrentCultureIgnoreCase) || s.Address!.Contains(searchString, System.StringComparison.CurrentCultureIgnoreCase));
+            }
+
+            ViewBag.SearchString = searchString;
+
+            return View(producers);
         }
 
         // GET: ProducersController/Details/5

@@ -35,6 +35,16 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <a href="@Url.Action("Edit", "Producers", new { Model.Id })" class="btn btn-primary">
+        <i class="me-2 bi bi-pencil-square"></i>
+        <span>
+            Edit
+        </span>
+    </a>
+    <a href="@Url.Action("Index", "Producers")" class="btn btn-info">
+        <i class="me-2 bi bi-box-arrow-in-right"></i>
+        <span>
+            Back to List
+        </span>
+    </a>
 </div>

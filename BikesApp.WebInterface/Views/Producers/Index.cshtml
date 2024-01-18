@@ -10,8 +10,27 @@
 
 <h1>Index</h1>
 
+<div class="mb-3">
+    <div>
+        <form asp-controller="Producers" asp-action="Index" method="get" class="col-12 col-xl-6 row">
+            <div class="col-9">
+                <input type="text" name="SearchString" placeholder="Search..." value=@ViewBag.SearchString class="form-control" />
+            </div>
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary"> <i class="bi bi-search"></i> </button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <p>
-    <a asp-action="Create">Create New</a>
+    <a href="@Url.Action("Create", "Producers")" class="btn btn-primary">
+        <i class="me-2 bi bi-plus-square"></i>
+        <span>
+            Add producer
+        </span>
+    </a>
+
 </p>
 <table class="table">
     <thead>
@@ -41,9 +60,24 @@
                 @Html.DisplayFor(modelItem => item.Address)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { item.Id })
+                    <a href="@Url.Action("Edit", "Producers", new { item.Id })" class="btn btn-primary">
+                        <i class="me-2 bi bi-pencil-square"></i>
+                        <span>
+                            Edit
+                        </span>
+                    </a>
+                    <a href="@Url.Action("Details", "Producers", new { item.Id })" class="btn btn-primary">
+                        <i class="me-2 bi bi-card-list"></i>
+                        <span>
+                            Details
+                        </span>
+                    </a>
+                    <a href="@Url.Action("Delete", "Producers", new { item.Id })" class="btn btn-danger">
+                        <i class="me-2 bi bi-trash3"></i>
+                        <span>
+                            Delete
+                        </span>
+                    </a>
             </td>
         </tr>
 }

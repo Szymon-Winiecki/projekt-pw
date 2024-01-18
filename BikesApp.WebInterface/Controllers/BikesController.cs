@@ -18,9 +18,22 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         }
 
         // GET: BikesController
-        public ActionResult Index()
+        public ActionResult Index(string searchString, string typeFilter)
         {
-            return View(_blc.GetBikes());
+            var bikes = _blc.GetBikes();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                bikes = bikes.Where(s => s.Name!.Contains(searchString, System.StringComparison.CurrentCultureIgnoreCase) || s.Producer.Name!.Contains(searchString, System.StringComparison.CurrentCultureIgnoreCase));
+            }
+
+            if(!String.IsNullOrEmpty(typeFilter))
+            {
+                bikes = bikes.Where(s => s.Type.ToString() == typeFilter);
+            }
+
+            ViewBag.SearchString = searchString;
+
+            return View(bikes);
         }
 
         // GET: BikesController/Details/5

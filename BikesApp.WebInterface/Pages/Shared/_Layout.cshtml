@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap-select/css/bootstrap-select.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BikesApp.WebInterface.styles.css" asp-append-version="true" />
+    <link href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -27,10 +28,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                         <li>
-                            @Html.ActionLink("Bikes", "Index", "Bikes", new { }, null)
+                            @Html.ActionLink("Bikes", "Index", "Bikes", null, new { @class = "nav-link text-dark" })
                         </li>
                         <li>
-                            @Html.ActionLink("Producers", "Index", "Producers", new { }, null)
+
+                            @Html.ActionLink("Producers", "Index", "Producers", null, new { @class = "nav-link text-dark" })
                         </li>
                         </ul>
                 </div>
