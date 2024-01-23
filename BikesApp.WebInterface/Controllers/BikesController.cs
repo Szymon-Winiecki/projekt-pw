@@ -18,7 +18,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
         }
 
         // GET: BikesController
-        public ActionResult Index(string searchString, string typeFilter)
+        public ActionResult Index(string searchString, string typeFilter, int? yearFrom, int? yearTo)
         {
             var bikes = _blc.GetBikes();
             if (!String.IsNullOrEmpty(searchString))
@@ -31,7 +31,23 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
                 bikes = bikes.Where(s => s.Type.ToString() == typeFilter);
             }
 
-            ViewBag.SearchString = searchString;
+            if (yearFrom != null)
+            {
+                bikes = bikes.Where(b => b.ReleaseYear >= yearFrom);
+            }
+
+			if (yearTo != null)
+			{
+				bikes = bikes.Where(b => b.ReleaseYear <= yearTo);
+			}
+
+			ViewBag.Types = Enum.GetNames(typeof(BikeType));
+
+			ViewBag.SearchString = searchString;
+			ViewBag.yearFrom = yearFrom;
+			ViewBag.yearTo = yearTo;
+            ViewBag.TypeFilter = typeFilter;
+
 
             return View(bikes);
         }

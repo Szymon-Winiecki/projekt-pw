@@ -26,16 +26,23 @@
                 <input asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group mt-2">
+                <button type="submit" class="btn btn-success">
+                    <i class="me-2 bi bi-plus-square"></i>
+                    <span>
+                        Create
+                    </span>
+                </button>
+
+                <a href="@Url.Action("Index", "Producers")" class="btn btn-danger">
+                    <i class="me-2 bi bi-box-arrow-in-right"></i>
+                    <span>
+                        Cancel
+                    </span>
+                </a>
             </div>
-            @Html.ValidationSummary()
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

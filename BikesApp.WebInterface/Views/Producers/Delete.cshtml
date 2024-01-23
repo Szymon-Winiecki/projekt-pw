@@ -42,6 +42,11 @@
                 Delete
             </span>
         </button>
-        <a asp-action="Index">Back to List</a>
+        <a href="@Url.Action("Index", "Producers")" class="btn btn-info">
+            <i class="me-2 bi bi-box-arrow-in-right"></i>
+            <span>
+                Back to List
+            </span>
+        </a>
     </form>
 </div>

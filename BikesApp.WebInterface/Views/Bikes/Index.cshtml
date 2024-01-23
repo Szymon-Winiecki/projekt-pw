@@ -18,11 +18,12 @@
                     <span>Type</span>
                 </div>
                 <div class="col-4">
-                    <select class="form-select" name="TypeFilter" value=@ViewBag.TypeFilter>
-                        <option>City</option>
-                        <option>Folding</option>
-                        <option>Two</option>
-                        <option>Three</option>
+                    <select class="form-select" name="TypeFilter">
+                        <option value="">All</option>
+                        @foreach (var type in ViewBag.Types)
+                        {
+                            <option value="@type" selected="@(ViewBag.TypeFilter == type)">@type</option>
+                        }
                     </select>
                 </div>
 

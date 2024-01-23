@@ -15,7 +15,7 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
             DbPath = System.IO.Path.Join(path, "bikes.db");
-            DbPath = "D:\\db\\bikes.db";
+            DbPath = "C:\\db\\bikes.db";
             System.Diagnostics.Debug.WriteLine($"SQLite database path: {DbPath}");
 
         }
