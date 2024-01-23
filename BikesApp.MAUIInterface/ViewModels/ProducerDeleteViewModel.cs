@@ -12,51 +12,53 @@ using SztuderWiniecki.BikesApp.MAUIInterface.ViewModels;
 
 namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
 {
-    public partial class ProducerCreateViewModel : ObservableObject
+    public partial class ProducerDeleteViewModel : ObservableObject, IQueryAttributable
     {
         [ObservableProperty]
-        private ProducerViewModel? newProducer;
+        private ProducerViewModel? producer;
 
         BLC.BLC blc = BLC.BLC.GetInstance();
 
-        public ProducerCreateViewModel()
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            NewProducer = new ProducerViewModel(blc.CreateProducer());
-            NewProducer.PropertyChanged += OnProducerPropertyChanged;
+            int? producerId = query["id"] as int?;
+
+            if (producerId != null)
+            {
+                Producer = new ProducerViewModel(blc.GetProducer((int)producerId));
+            }
+            else
+            {
+                Producer = null;
+            }
+
         }
 
         [RelayCommand]
-        public void Cancel()
+        public async void Cancel()
         {
             ReturnToPreviousPage();
         }
 
-        [RelayCommand(CanExecute = nameof(CanSave))]
-        public void Save()
+        [RelayCommand(CanExecute = nameof(CanDelete))]
+        public void Delete()
         {
-            IProducer daoProducer = blc.CreateProducer().CopyFrom(NewProducer);
-            blc.AddProducer(daoProducer);
+            blc.RemoveProducer(Producer.Id);
             blc.SaveChanges();
-            NewProducer.PropertyChanged -= OnProducerPropertyChanged;
 
             RefreshCanExecute();
 
             ReturnToPreviousPage();
         }
 
-        private bool CanSave()
+        private bool CanDelete()
         {
-            return !string.IsNullOrWhiteSpace(NewProducer.Name) && !string.IsNullOrWhiteSpace(NewProducer.Address);
-        }
-
-        private void OnProducerPropertyChanged(object? sender, PropertyChangedEventArgs e)
-        {
-            SaveCommand.NotifyCanExecuteChanged();
+            return Producer != null;
         }
 
         private void RefreshCanExecute()
         {
-            SaveCommand.NotifyCanExecuteChanged();
+            DeleteCommand.NotifyCanExecuteChanged();
             CancelCommand.NotifyCanExecuteChanged();
         }
 

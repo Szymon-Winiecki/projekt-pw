@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
+             x:Class="BikesApp.MAUIInterface.BikeDeletePage"
+             Title="BikeDeletePage">
+    <VerticalStackLayout>
+        <Label 
+         Text="Are you sure you want to remove this bike?"
+         VerticalOptions="Center" 
+         HorizontalOptions="Center" />
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" 
+          ColumnDefinitions="Auto,Auto"
+          BindingContext="{Binding Bike}">
+            <Label Grid.Column="0" Grid.Row="0" Text="Name" />
+            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+
+            <Label Grid.Column="0" Grid.Row="1" Text="Producer" />
+            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Producer.Name}" />
+
+            <Label Grid.Column="0" Grid.Row="2" Text="ReleaseYear" />
+            <Label Grid.Column="1" Grid.Row="2" Text="{Binding ReleaseYear}" />
+
+            <Label Grid.Column="0" Grid.Row="3" Text="Type" />
+            <Label Grid.Column="1" Grid.Row="3" Text="{Binding Type}" />
+        </Grid>
+        <HorizontalStackLayout>
+            <Button Text="Delete" Command="{Binding DeleteCommand}" />
+            <Button Text="Cancel" Command="{Binding BackCommand}" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

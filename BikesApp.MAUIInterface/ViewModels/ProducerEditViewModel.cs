@@ -2,44 +2,42 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SztuderWiniecki.BikesApp.BLC;
-using SztuderWiniecki.BikesApp.Core;
 using SztuderWiniecki.BikesApp.Interfaces;
 using SztuderWiniecki.BikesApp.MAUIInterface.ViewModels;
 
 namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
 {
-    public partial class BikeCreateViewModel : ObservableObject
+    public partial class ProducerEditViewModel : ObservableObject, IQueryAttributable
     {
         [ObservableProperty]
-        public ObservableCollection<string> types;
-
-        [ObservableProperty]
-        public ObservableCollection<ProducerViewModel> producers;
-
-        [ObservableProperty]
-        private BikeViewModel? bike;
+        private ProducerViewModel? producer;
 
         BLC.BLC blc = BLC.BLC.GetInstance();
 
-        public BikeCreateViewModel()
+        public ProducerEditViewModel()
         {
-            Types = new ObservableCollection<string>(Enum.GetNames(typeof(BikeType)));
+            
+        }
 
-            Producers = new ObservableCollection<ProducerViewModel>();
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            int? producerId = query["id"] as int?;
 
-            foreach (var producer in blc.GetProducers())
+            if (producerId != null)
             {
-                producers.Add(new ProducerViewModel(producer));
+                Producer = new ProducerViewModel(blc.GetProducer((int)producerId));
+                Producer.PropertyChanged += OnProducerPropertyChanged;
+            }
+            else
+            {
+                Producer = null;
             }
 
-            Bike = new BikeViewModel(blc.CreateBike());
-            Bike.PropertyChanged += OnBikePropertyChanged;
         }
 
         [RelayCommand]
@@ -51,11 +49,10 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         [RelayCommand(CanExecute = nameof(CanSave))]
         public void Save()
         {
-            IBike daoBike = blc.CreateBike().CopyFrom(Bike);
-            daoBike.Producer = blc.GetProducer(Bike.Producer.Id);
-            blc.AddBike(daoBike);
+            IProducer daoProducer = blc.GetProducer(Producer.Id).CopyFrom(Producer);
+            blc.UpdateProducer(daoProducer);
             blc.SaveChanges();
-            Bike.PropertyChanged -= OnBikePropertyChanged;
+            Producer.PropertyChanged -= OnProducerPropertyChanged;
 
             RefreshCanExecute();
 
@@ -64,10 +61,15 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
 
         private bool CanSave()
         {
-            return !string.IsNullOrWhiteSpace(Bike?.Name) && Bike.ReleaseYear > 1700;
+            if (Producer == null)
+            {
+                return false;
+            }
+
+            return !string.IsNullOrWhiteSpace(Producer.Name) && !string.IsNullOrWhiteSpace(Producer.Address);
         }
 
-        private void OnBikePropertyChanged(object? sender, PropertyChangedEventArgs e)
+        private void OnProducerPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
             SaveCommand.NotifyCanExecuteChanged();
         }

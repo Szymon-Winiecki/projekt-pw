@@ -35,14 +35,33 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         }
 
         [RelayCommand]
-        private async void ShowDetails(int id)
+        private async void ShowDetails()
         {
-            System.Diagnostics.Debug.WriteLine($"ShowDetails({id})");
             var query = new ShellNavigationQueryParameters
             {
-                { "id", id }
+                { "id", Id }
             };
             await Shell.Current.GoToAsync(nameof(ProducerDetailsPage), query);
+        }
+
+        [RelayCommand]
+        private async void EditProducer()
+        {
+            var query = new ShellNavigationQueryParameters
+            {
+                { "id", Id }
+            };
+            await Shell.Current.GoToAsync(nameof(ProducerEditPage), query);
+        }
+
+        [RelayCommand]
+        private async void DeleteProducer()
+        {
+            var query = new ShellNavigationQueryParameters
+            {
+                { "id", Id }
+            };
+            await Shell.Current.GoToAsync(nameof(ProducerDeletePage), query);
         }
     }
 }

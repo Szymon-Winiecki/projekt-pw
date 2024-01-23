@@ -14,32 +14,26 @@ using SztuderWiniecki.BikesApp.MAUIInterface.ViewModels;
 
 namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
 {
-    public partial class BikeCreateViewModel : ObservableObject
+    public partial class BikeDeleteViewModel : ObservableObject, IQueryAttributable
     {
-        [ObservableProperty]
-        public ObservableCollection<string> types;
-
-        [ObservableProperty]
-        public ObservableCollection<ProducerViewModel> producers;
-
         [ObservableProperty]
         private BikeViewModel? bike;
 
         BLC.BLC blc = BLC.BLC.GetInstance();
 
-        public BikeCreateViewModel()
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            Types = new ObservableCollection<string>(Enum.GetNames(typeof(BikeType)));
+            int? bikeId = query["id"] as int?;
 
-            Producers = new ObservableCollection<ProducerViewModel>();
-
-            foreach (var producer in blc.GetProducers())
+            if (bikeId != null)
             {
-                producers.Add(new ProducerViewModel(producer));
+                Bike = new BikeViewModel(blc.GetBike((int)bikeId));
+            }
+            else
+            {
+                Bike = null;
             }
 
-            Bike = new BikeViewModel(blc.CreateBike());
-            Bike.PropertyChanged += OnBikePropertyChanged;
         }
 
         [RelayCommand]
@@ -48,33 +42,30 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
             ReturnToPreviousPage();
         }
 
-        [RelayCommand(CanExecute = nameof(CanSave))]
-        public void Save()
+        [RelayCommand(CanExecute = nameof(CanDelete))]
+        public void Delete()
         {
-            IBike daoBike = blc.CreateBike().CopyFrom(Bike);
-            daoBike.Producer = blc.GetProducer(Bike.Producer.Id);
-            blc.AddBike(daoBike);
+            blc.RemoveBike(Bike.Id);
             blc.SaveChanges();
-            Bike.PropertyChanged -= OnBikePropertyChanged;
 
             RefreshCanExecute();
 
             ReturnToPreviousPage();
         }
 
-        private bool CanSave()
+        private bool CanDelete()
         {
-            return !string.IsNullOrWhiteSpace(Bike?.Name) && Bike.ReleaseYear > 1700;
+            return Bike != null;
         }
 
         private void OnBikePropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            SaveCommand.NotifyCanExecuteChanged();
+            DeleteCommand.NotifyCanExecuteChanged();
         }
 
         private void RefreshCanExecute()
         {
-            SaveCommand.NotifyCanExecuteChanged();
+            DeleteCommand.NotifyCanExecuteChanged();
             CancelCommand.NotifyCanExecuteChanged();
         }
 

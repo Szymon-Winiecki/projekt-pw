@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
+             x:Class="BikesApp.MAUIInterface.ProducerEditPage"
+             Title="ProducerEditPage">
+    <VerticalStackLayout>
+
+        <Grid RowDefinitions="Auto,Auto" 
+          ColumnDefinitions="Auto,Auto"
+          BindingContext="{Binding Producer}">
+            <Label Grid.Column="0" Grid.Row="0" Text="Name" />
+            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+
+            <Label Grid.Column="0" Grid.Row="1" Text="Address" />
+            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding Address}" />
+        </Grid>
+        <HorizontalStackLayout>
+            <Button Text="Save" Command="{Binding SaveCommand}" />
+            <Button Text="Cancel" Command="{Binding CancelCommand}" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

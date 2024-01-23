@@ -60,7 +60,7 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         [RelayCommand]
         public async void Cancel()
         {
-            await Shell.Current.GoToAsync("///BikesIndex");
+            ReturnToPreviousPage();
         }
 
         [RelayCommand(CanExecute = nameof(CanSave))]
@@ -72,6 +72,8 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
             blc.SaveChanges();
 
             RefreshCanExecute();
+
+            ReturnToPreviousPage();
         }
 
         private bool CanSave()
@@ -88,6 +90,11 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         {
             SaveCommand.NotifyCanExecuteChanged();
             CancelCommand.NotifyCanExecuteChanged();
+        }
+
+        private async void ReturnToPreviousPage()
+        {
+            await Shell.Current.Navigation.PopAsync();
         }
     }
 }

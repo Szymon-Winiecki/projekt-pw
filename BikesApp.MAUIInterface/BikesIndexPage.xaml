@@ -20,8 +20,9 @@
                             <Label Text="{Binding Producer.Name}" WidthRequest="200" />
                             <Label Text="{Binding ReleaseYear}" WidthRequest="200" />
                             <Label Text="{Binding Type}" WidthRequest="200" />
-                            <Button Text="Details" WidthRequest="200" Command="{Binding ShowDetailsCommand}" CommandParameter="{Binding Id}" />
-                            <Button Text="Edit" WidthRequest="200" Command="{Binding EditBikeCommand}" CommandParameter="{Binding Id}" />
+                            <Button Text="Details" WidthRequest="150" Command="{Binding ShowDetailsCommand}" />
+                            <Button Text="Edit" WidthRequest="150" Command="{Binding EditBikeCommand}" />
+                            <Button Text="Delete" WidthRequest="150" Command="{Binding DeleteBikeCommand}" />
                         </HorizontalStackLayout>
                     </ViewCell>
                 </DataTemplate>

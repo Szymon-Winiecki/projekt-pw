@@ -27,6 +27,12 @@ namespace BikesApp.MAUIInterface
             builder.Services.AddTransient<ProducerDetailsViewModel>();
             builder.Services.AddTransient<ProducerDetailsPage>();
 
+            builder.Services.AddTransient<ProducerEditViewModel>();
+            builder.Services.AddTransient<ProducerEditPage>();
+
+            builder.Services.AddTransient<ProducerDeleteViewModel>();
+            builder.Services.AddTransient<ProducerDeletePage>();
+
             builder.Services.AddSingleton<BikeCollectionViewModel>();
             builder.Services.AddSingleton<BikesIndexPage>();
 
@@ -39,12 +45,18 @@ namespace BikesApp.MAUIInterface
             builder.Services.AddTransient<BikeEditViewModel>();
             builder.Services.AddTransient<BikeEditPage>();
 
+            builder.Services.AddTransient<BikeDeleteViewModel>();
+            builder.Services.AddTransient<BikeDeletePage>();
+
             Routing.RegisterRoute(nameof(ProducerCreatePage), typeof(ProducerCreatePage));
             Routing.RegisterRoute(nameof(ProducerDetailsPage), typeof(ProducerDetailsPage));
+            Routing.RegisterRoute(nameof(ProducerEditPage), typeof(ProducerEditPage));
+            Routing.RegisterRoute(nameof(ProducerDeletePage), typeof(ProducerDeletePage));
 
             Routing.RegisterRoute(nameof(BikeDetailsPage), typeof(BikeDetailsPage));
             Routing.RegisterRoute(nameof(BikeCreatePage), typeof(BikeCreatePage));
             Routing.RegisterRoute(nameof(BikeEditPage), typeof(BikeEditPage));
+            Routing.RegisterRoute(nameof(BikeDeletePage), typeof(BikeDeletePage));
 
 #if DEBUG
             builder.Logging.AddDebug();
