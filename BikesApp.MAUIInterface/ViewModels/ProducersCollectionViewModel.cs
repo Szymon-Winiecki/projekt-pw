@@ -10,11 +10,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using SztuderWiniecki.BikesApp.BLC;
+using SztuderWiniecki.BikesApp.Core;
+using SztuderWiniecki.BikesApp.Interfaces;
 
 namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
 {
     public partial class ProducersCollectionViewModel: ObservableObject
     {
+        [ObservableProperty]
+        string searchString = "";
+
         [ObservableProperty]
         private ObservableCollection<ProducerViewModel> producers;
 
@@ -51,14 +56,27 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         private bool isEditing;
 
         [RelayCommand]
-        public void Reload()
+        private void Search()
         {
             producers.Clear();
 
-            foreach (var producer in blc.GetProducers())
+            IEnumerable<IProducer> daoProducers = blc.GetProducers();
+            if (SearchString != "")
+            {
+                daoProducers = daoProducers.Where(p => p.Name.Contains(SearchString, System.StringComparison.CurrentCultureIgnoreCase) || p.Address.Contains(SearchString, System.StringComparison.CurrentCultureIgnoreCase));
+            }
+
+            foreach (var producer in daoProducers)
             {
                 producers.Add(new ProducerViewModel(producer));
             }
+        }
+
+        [RelayCommand]
+        public void ResetFilters()
+        {
+            SearchString = "";
+            Search();
         }
 
         [RelayCommand(CanExecute = nameof(CanCreateNewProducer))]

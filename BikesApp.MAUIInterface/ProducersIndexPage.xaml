@@ -6,11 +6,17 @@
              x:Class="BikesApp.MAUIInterface.ProducersIndexPage"
              Title="ProducersIndexPage">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding ReloadCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding SearchCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
     <VerticalStackLayout>
-        <Button Text="Reload" Command="{Binding ReloadCommand}" />
+        <HorizontalStackLayout>
+            <Label WidthRequest="100" Text="Search" />
+            <Entry WidthRequest="200" Text="{Binding SearchString}" />
+
+            <Button WidthRequest="120" Text="Apply" Command="{Binding SearchCommand}" />
+            <Button WidthRequest="120" Text="Reset filters" Command="{Binding ResetFiltersCommand}" />
+        </HorizontalStackLayout>
 
         <ListView ItemsSource="{Binding Producers}">
             <ListView.ItemTemplate>

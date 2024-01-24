@@ -6,10 +6,31 @@
              x:Class="BikesApp.MAUIInterface.BikesIndexPage"
              Title="Bikes Collection">
     <ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding ReloadCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding SearchCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
+
+
     <VerticalStackLayout>
-        <Button Text="Reload" Command="{Binding ReloadCommand}" />
+        
+        <Grid RowDefinitions="Auto,Auto" 
+         ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+
+            <Label Grid.Column="0" Grid.Row="0" Text="Type" />
+            <Picker Grid.Column="1" Grid.Row="0" SelectedItem="{Binding SelectedType}" ItemsSource="{Binding Types}">
+            </Picker>
+
+            <Label Grid.Column="2" Grid.Row="0" Text="Release year from" />
+            <Entry Grid.Column="3" Grid.Row="0" Text="{Binding YearFrom}" />
+            <Label Grid.Column="4" Grid.Row="0" Text="to" />
+            <Entry Grid.Column="5" Grid.Row="0" Text="{Binding YearTo}" />
+
+            <Label Grid.Column="0" Grid.Row="1" Text="Search" />
+            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding SearchString}" />
+
+            <Button Text="Apply" Grid.Column="2" Grid.Row="1" Command="{Binding SearchCommand}" />
+            <Button Text="Reset Filters" Grid.Column="3" Grid.Row="1" Command="{Binding ResetFiltersCommand}" />
+            
+        </Grid>
 
         <ListView ItemsSource="{Binding Bikes}">
             <ListView.ItemTemplate>
