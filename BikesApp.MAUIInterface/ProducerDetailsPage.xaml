@@ -4,19 +4,24 @@
              xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
              x:Class="BikesApp.MAUIInterface.ProducerDetailsPage"
              Title="Producer Details">
-    <VerticalStackLayout>
-        
-        <Grid RowDefinitions="Auto,Auto" 
-              ColumnDefinitions="Auto,Auto"
-              BindingContext="{Binding Producer}">
-            <Label Grid.Column="0" Grid.Row="0" Text="Name" />
-            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+    
+    <VerticalStackLayout Spacing="20" StyleClass="main-container">
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Address" />
-            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Address}" />
+        <Grid RowDefinitions="Auto,Auto,Auto" 
+              ColumnDefinitions="100,200"
+              StyleClass="properties-grid"
+              BindingContext="{Binding Producer}">
+            <Label StyleClass="property-name" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="0" Text="Id" />
+            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Id}" />
+            
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="1" Text="Name:" />
+            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Name}" />
+
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="2" Text="Address:" />
+            <Label Grid.Column="1" Grid.Row="2" Text="{Binding Address}" />
         </Grid>
         <HorizontalStackLayout>
-            <Button Text="Back" Command="{Binding BackCommand}" />
+            <Button Text="Back" WidthRequest="120" StyleClass="btn-primary" Command="{Binding BackCommand}" />
         </HorizontalStackLayout>
         
     </VerticalStackLayout>

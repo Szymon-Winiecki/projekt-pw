@@ -4,29 +4,38 @@
              xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
              x:Class="BikesApp.MAUIInterface.BikeDeletePage"
              Title="BikeDeletePage">
-    <VerticalStackLayout>
+    
+    <VerticalStackLayout Spacing="20" StyleClass="main-container">
+        
         <Label 
          Text="Are you sure you want to remove this bike?"
          VerticalOptions="Center" 
-         HorizontalOptions="Center" />
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto" 
+         HorizontalOptions="Center"
+         FontAttributes="Bold"
+         FontSize="24" />
+        
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
           ColumnDefinitions="Auto,Auto"
+          StyleClass="properties-grid"
           BindingContext="{Binding Bike}">
-            <Label Grid.Column="0" Grid.Row="0" Text="Name" />
-            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="0" Text="Id" />
+            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Id}" />
+            
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="1" Text="Name" />
+            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Name}" />
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Producer" />
-            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Producer.Name}" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="2" Text="Producer" />
+            <Label Grid.Column="1" Grid.Row="2" Text="{Binding Producer.Name}" />
 
-            <Label Grid.Column="0" Grid.Row="2" Text="ReleaseYear" />
-            <Label Grid.Column="1" Grid.Row="2" Text="{Binding ReleaseYear}" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="3" Text="ReleaseYear" />
+            <Label Grid.Column="1" Grid.Row="3" Text="{Binding ReleaseYear}" />
 
-            <Label Grid.Column="0" Grid.Row="3" Text="Type" />
-            <Label Grid.Column="1" Grid.Row="3" Text="{Binding Type}" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="4" Text="Type" />
+            <Label Grid.Column="1" Grid.Row="4" Text="{Binding Type}" />
         </Grid>
-        <HorizontalStackLayout>
-            <Button Text="Delete" Command="{Binding DeleteCommand}" />
-            <Button Text="Cancel" Command="{Binding BackCommand}" />
+        <HorizontalStackLayout Spacing="10">
+            <Button WidthRequest="120" StyleClass="btn-danger" Text="Delete" Command="{Binding DeleteCommand}" />
+            <Button WidthRequest="120" StyleClass="btn-secondary" Text="Cancel" Command="{Binding BackCommand}" />
         </HorizontalStackLayout>
 
     </VerticalStackLayout>

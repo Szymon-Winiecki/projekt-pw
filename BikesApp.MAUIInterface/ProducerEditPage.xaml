@@ -4,20 +4,27 @@
              xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
              x:Class="BikesApp.MAUIInterface.ProducerEditPage"
              Title="ProducerEditPage">
-    <VerticalStackLayout>
+    
+    <VerticalStackLayout Spacing="20" StyleClass="main-container">
 
-        <Grid RowDefinitions="Auto,Auto" 
-          ColumnDefinitions="Auto,Auto"
+        <Grid RowDefinitions="Auto,Auto,Auto" 
+          ColumnDefinitions="100,200,Auto"
+          StyleClass="properties-grid"
           BindingContext="{Binding Producer}">
-            <Label Grid.Column="0" Grid.Row="0" Text="Name" />
-            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+            <Label StyleClass="property-name" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="0" Text="Id" />
+            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Id}" />
+            
+            <Label StyleClass="property-name" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="1" Text="Name" />
+            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding Name}" />
+            <Label StyleClass="error-text" VerticalTextAlignment="Center" Grid.Column="2" Grid.Row="1" Text="{Binding NameErrors}" />
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Address" />
-            <Entry Grid.Column="1" Grid.Row="1" Text="{Binding Address}" />
+            <Label StyleClass="property-name" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="2" Text="Address" />
+            <Entry Grid.Column="1" Grid.Row="2" Text="{Binding Address}" />
+            <Label StyleClass="error-text" VerticalTextAlignment="Center" Grid.Column="2" Grid.Row="2" Text="{Binding AddressErrors}" />
         </Grid>
-        <HorizontalStackLayout>
-            <Button Text="Save" Command="{Binding SaveCommand}" />
-            <Button Text="Cancel" Command="{Binding CancelCommand}" />
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Save" WidthRequest="120" StyleClass="btn-success" Command="{Binding SaveCommand}" />
+            <Button Text="Cancel" WidthRequest="120" StyleClass="btn-secondary" Command="{Binding CancelCommand}" />
         </HorizontalStackLayout>
 
     </VerticalStackLayout>

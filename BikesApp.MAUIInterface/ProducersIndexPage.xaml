@@ -4,36 +4,45 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
              x:Class="BikesApp.MAUIInterface.ProducersIndexPage"
-             Title="ProducersIndexPage">
+             Title="List of producers">
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding SearchCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
-    <VerticalStackLayout>
-        <HorizontalStackLayout>
-            <Label WidthRequest="100" Text="Search" />
-            <Entry WidthRequest="200" Text="{Binding SearchString}" />
+    <VerticalStackLayout Spacing="10" StyleClass="main-container">
+        <HorizontalStackLayout Spacing="10">
+            <Label WidthRequest="100" VerticalTextAlignment="Center" Text="Search" />
+            <Entry WidthRequest="300" Text="{Binding SearchString}" />
 
-            <Button WidthRequest="120" Text="Apply" Command="{Binding SearchCommand}" />
-            <Button WidthRequest="120" Text="Reset filters" Command="{Binding ResetFiltersCommand}" />
+            <Button WidthRequest="120" StyleClass="btn-primary" Text="Apply" Command="{Binding SearchCommand}" />
+            <Button WidthRequest="120" StyleClass="btn-secondary" Text="Reset filters" Command="{Binding ResetFiltersCommand}" />
         </HorizontalStackLayout>
 
+        <HorizontalStackLayout Spacing="10">
+            <Label Text="id" StyleClass="list-header" WidthRequest="40" />
+            <Label Text="name" StyleClass="list-header" WidthRequest="200" />
+            <Label Text="address" StyleClass="list-header" WidthRequest="200" />
+            <Label Text="details" StyleClass="list-header" WidthRequest="120" HorizontalTextAlignment="Center"/>
+            <Label Text="edit" StyleClass="list-header" WidthRequest="120" HorizontalTextAlignment="Center" />
+            <Label Text="delete" StyleClass="list-header" WidthRequest="120" HorizontalTextAlignment="Center" />
+        </HorizontalStackLayout>
         <ListView ItemsSource="{Binding Producers}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <HorizontalStackLayout>
-                            <Label Text="{Binding Name}" WidthRequest="400" />
-                            <Label Text="{Binding Address}" WidthRequest="400" />
-                            <Button Text="Details" WidthRequest="150" Command="{Binding ShowDetailsCommand}" />
-                            <Button Text="Edit" WidthRequest="150" Command="{Binding EditProducerCommand}" />
-                            <Button Text="Delete" WidthRequest="150" Command="{Binding DeleteProducerCommand}" />
+                        <HorizontalStackLayout Spacing="10">
+                            <Label Text="{Binding Id}" WidthRequest="40" />
+                            <Label Text="{Binding Name}" WidthRequest="200" />
+                            <Label Text="{Binding Address}" WidthRequest="200" />
+                            <Button Text="Details" WidthRequest="120" StyleClass="btn-primary" Command="{Binding ShowDetailsCommand}" />
+                            <Button Text="Edit" WidthRequest="120" StyleClass="btn-secondary" Command="{Binding EditProducerCommand}" />
+                            <Button Text="Delete" WidthRequest="120" StyleClass="btn-danger" Command="{Binding DeleteProducerCommand}" />
                         </HorizontalStackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Text="Add Producer" Command="{Binding CreateNewProducerCommand}"/>
+        <Button Text="Add Producer" WidthRequest="120" StyleClass="btn-primary" Command="{Binding CreateNewProducerCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

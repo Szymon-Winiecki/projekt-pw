@@ -41,7 +41,7 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         }
 
         [RelayCommand]
-        public async void Cancel()
+        public void Cancel()
         {
             ReturnToPreviousPage();
         }
@@ -66,7 +66,11 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
                 return false;
             }
 
-            return !string.IsNullOrWhiteSpace(Producer.Name) && !string.IsNullOrWhiteSpace(Producer.Address);
+            if (Producer.GetErrors().Any())
+            {
+                return false;
+            }
+            return true;
         }
 
         private void OnProducerPropertyChanged(object? sender, PropertyChangedEventArgs e)

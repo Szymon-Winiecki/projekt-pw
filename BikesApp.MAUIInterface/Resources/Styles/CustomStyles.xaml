@@ -14,7 +14,7 @@
                     </VisualState>
                     <VisualState x:Name="Focused">
                         <VisualState.Setters>
-                            <Setter Property="BorderWidth" Value="2" />
+                            <Setter Property="BorderWidth" Value="4" />
                             <Setter Property="BorderColor" Value="Black" />
                         </VisualState.Setters>
                     </VisualState>
@@ -49,7 +49,13 @@
                     </VisualState>
                     <VisualState x:Name="Focused">
                         <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Blue" />
                             <Setter Property="BorderColor" Value="Grey" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="DimGray" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="PointerOver">
@@ -76,7 +82,13 @@
                     </VisualState>
                     <VisualState x:Name="Focused">
                         <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="DarkSlateBlue" />
                             <Setter Property="BorderColor" Value="Grey" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="DimGray" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="PointerOver">
@@ -103,7 +115,13 @@
                     </VisualState>
                     <VisualState x:Name="Focused">
                         <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Red" />
                             <Setter Property="BorderColor" Value="Grey" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="DimGray" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="PointerOver">
@@ -130,7 +148,13 @@
                     </VisualState>
                     <VisualState x:Name="Focused">
                         <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="Green" />
                             <Setter Property="BorderColor" Value="Grey" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="DimGray" />
                         </VisualState.Setters>
                     </VisualState>
                     <VisualState x:Name="PointerOver">
@@ -148,6 +172,24 @@
 
     <Style TargetType="Label" Class="list-header">
         <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style TargetType="VerticalStackLayout" Class="main-container">
+        <Setter Property="Padding" Value="10" />
+    </Style>
+
+    <Style TargetType="Label" Class="property-name">
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style TargetType="Label" Class="error-text">
+        <Setter Property="TextColor" Value="Red" />
+        <Setter Property="FontAttributes" Value="Italic" />
+    </Style>
+
+    <Style TargetType="Grid" Class="properties-grid">
+        <Setter Property="RowSpacing" Value="10" />
+        <Setter Property="ColumnSpacing" Value="10" />
     </Style>
     
 </ResourceDictionary>

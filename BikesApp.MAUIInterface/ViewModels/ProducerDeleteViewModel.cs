@@ -35,7 +35,7 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         }
 
         [RelayCommand]
-        public async void Cancel()
+        public void Cancel()
         {
             ReturnToPreviousPage();
         }

@@ -4,23 +4,32 @@
              xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
              x:Class="BikesApp.MAUIInterface.ProducerDeletePage"
              Title="ProducerDeletePage">
-    <VerticalStackLayout>
+
+    <VerticalStackLayout Spacing="20" StyleClass="main-container">
+        
         <Label 
          Text="Are you sure you want to remove this producer?"
          VerticalOptions="Center" 
-         HorizontalOptions="Center" />
-        <Grid RowDefinitions="Auto,Auto" 
-          ColumnDefinitions="Auto,Auto"
+         HorizontalOptions="Start"
+         FontAttributes="Bold"
+         FontSize="24"/>
+        
+        <Grid RowDefinitions="Auto,Auto,Auto" 
+          ColumnDefinitions="100,200"
+          StyleClass="properties-grid"
           BindingContext="{Binding Producer}">
-            <Label Grid.Column="0" Grid.Row="0" Text="Name" />
-            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+            <Label StyleClass="property-name" VerticalTextAlignment="Center" Grid.Column="0" Grid.Row="0" Text="Id" />
+            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Id}" />
+            
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="1" Text="Name:" />
+            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Name}" />
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Address" />
-            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Address}" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="2" Text="Address:" />
+            <Label Grid.Column="1" Grid.Row="2" Text="{Binding Address}" />
         </Grid>
-        <HorizontalStackLayout>
-            <Button Text="Delete" Command="{Binding DeleteCommand}" />
-            <Button Text="Cancel" Command="{Binding BackCommand}" />
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Delete" WidthRequest="120" StyleClass="btn-danger" Command="{Binding DeleteCommand}" />
+            <Button Text="Cancel" WidthRequest="120" StyleClass="btn-secondary" Command="{Binding BackCommand}" />
         </HorizontalStackLayout>
 
     </VerticalStackLayout>

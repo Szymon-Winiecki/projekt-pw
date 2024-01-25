@@ -4,25 +4,30 @@
              xmlns:viewmodel="clr-namespace:SztuderWiniecki.BikesApp.MAUIInterface.ViewModels"
              x:Class="BikesApp.MAUIInterface.BikeDetailsPage"
              Title="BikeDetailsPage">
-    <VerticalStackLayout>
+    
+    <VerticalStackLayout Spacing="20" StyleClass="main-container">
 
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto" 
-          ColumnDefinitions="Auto,Auto"
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
+          ColumnDefinitions="100,200"
+          StyleClass="properties-grid"
           BindingContext="{Binding Bike}">
-            <Label Grid.Column="0" Grid.Row="0" Text="Name" />
-            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="0" Text="Id" />
+            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Id}" />
+            
+            <Label StyleClass="property-name" Grid.Column="1" Grid.Row="0" Text="Name" />
+            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Name}" />
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Producer" />
-            <Label Grid.Column="1" Grid.Row="1" Text="{Binding Producer.Name}" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="2" Text="Producer" />
+            <Label Grid.Column="1" Grid.Row="2" Text="{Binding Producer.Name}" />
 
-            <Label Grid.Column="0" Grid.Row="2" Text="ReleaseYear" />
-            <Label Grid.Column="1" Grid.Row="2" Text="{Binding ReleaseYear}" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="3" Text="ReleaseYear" />
+            <Label Grid.Column="1" Grid.Row="3" Text="{Binding ReleaseYear}" />
 
-            <Label Grid.Column="0" Grid.Row="3" Text="Type" />
-            <Label Grid.Column="1" Grid.Row="3" Text="{Binding Type}" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="4" Text="Type" />
+            <Label Grid.Column="1" Grid.Row="4" Text="{Binding Type}" />
         </Grid>
         <HorizontalStackLayout>
-            <Button Text="Back" Command="{Binding BackCommand}" />
+            <Button WidthRequest="120" StyleClass="btn-primary" Text="Back" Command="{Binding BackCommand}" />
         </HorizontalStackLayout>
 
     </VerticalStackLayout>

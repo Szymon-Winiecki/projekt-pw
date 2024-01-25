@@ -9,31 +9,33 @@
         <toolkit:EventToCommandBehavior Command="{Binding SearchCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
-    <VerticalStackLayout Spacing="10">
+    <VerticalStackLayout Spacing="20" StyleClass="main-container">
 
-        <HorizontalStackLayout Spacing="10">
-            <Label MinimumWidthRequest="120" Text="Type:" />
-            <Picker MinimumWidthRequest="100"  SelectedItem="{Binding SelectedType}" ItemsSource="{Binding Types}">
-            </Picker>
-        </HorizontalStackLayout>
+        <VerticalStackLayout Spacing="10">
+            <HorizontalStackLayout Spacing="10">
+                <Label MinimumWidthRequest="120" Text="Type:" />
+                <Picker MinimumWidthRequest="100"  SelectedItem="{Binding SelectedType}" ItemsSource="{Binding Types}">
+                </Picker>
+            </HorizontalStackLayout>
 
-        <HorizontalStackLayout Spacing="10">
-            <Label MinimumWidthRequest="120" VerticalOptions="Center" Text="Release year from" />
-            <Entry MinimumWidthRequest="70" Text="{Binding YearFrom}" />
-     
-            
-            <Label VerticalOptions="Center" Text="to" />
-            <Entry MinimumWidthRequest="70" Text="{Binding YearTo}" />
-        </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label MinimumWidthRequest="120" VerticalOptions="Center" Text="Release year from" />
+                <Entry MinimumWidthRequest="70" Text="{Binding YearFrom}" />
 
-        <HorizontalStackLayout Spacing="10">
-            <Label MinimumWidthRequest="120" VerticalOptions="Center" Text="Search:" />
-            <Entry MinimumWidthRequest="300" Text="{Binding SearchString}" />
 
-            <Button MinimumWidthRequest="120" Text="Apply" StyleClass="btn-primary" Command="{Binding SearchCommand}" />
-            <Button MinimumWidthRequest="120" Text="Reset Filters" StyleClass="btn-secondary" Command="{Binding ResetFiltersCommand}" />
+                <Label VerticalOptions="Center" Text="to" />
+                <Entry MinimumWidthRequest="70" Text="{Binding YearTo}" />
+            </HorizontalStackLayout>
 
-        </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
+                <Label MinimumWidthRequest="120" VerticalOptions="Center" Text="Search:" />
+                <Entry MinimumWidthRequest="300" Text="{Binding SearchString}" />
+
+                <Button MinimumWidthRequest="120" Text="Apply" StyleClass="btn-primary" Command="{Binding SearchCommand}" />
+                <Button MinimumWidthRequest="120" Text="Reset Filters" StyleClass="btn-secondary" Command="{Binding ResetFiltersCommand}" />
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
 
 
         <HorizontalStackLayout Spacing="10">

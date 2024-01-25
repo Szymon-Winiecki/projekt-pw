@@ -11,28 +11,29 @@
             <toolkit:EnumToIntConverter x:Key="EnumToIntConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    <VerticalStackLayout>
+
+    <VerticalStackLayout Spacing="20" StyleClass="main-container">
 
         <Grid RowDefinitions="Auto,Auto,Auto,Auto" 
-          ColumnDefinitions="Auto,Auto">
-            <Label Grid.Column="0" Grid.Row="0" Text="Name" />
+          ColumnDefinitions="100,200"
+          StyleClass="properties-grid">
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="0" Text="Name" />
             <Entry Grid.Column="1" Grid.Row="0" Text="{Binding Bike.Name}" />
 
-            <Label Grid.Column="0" Grid.Row="1" Text="Type" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="1" Text="Type" />
             <Picker Grid.Column="1" Grid.Row="1" SelectedIndex="{Binding Bike.Type, Converter={StaticResource EnumToIntConverter}, ConverterParameter={x:Type interfaces:BikeType}}" ItemsSource="{Binding Types}">
             </Picker>
 
-            <Label Grid.Column="0" Grid.Row="2" Text="ReleaseYear" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="2" Text="ReleaseYear" />
             <Entry Grid.Column="1" Grid.Row="2" Text="{Binding Bike.ReleaseYear}" />
 
-            <Label Grid.Column="0" Grid.Row="3" Text="Producer" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="3" Text="Producer" />
             <Picker Grid.Column="1" Grid.Row="3" SelectedItem="{Binding Bike.Producer}" ItemsSource="{Binding Producers}" ItemDisplayBinding="{Binding Name}">
             </Picker>
         </Grid>
-        <HorizontalStackLayout>
-            <Button Text="Create" Command="{Binding SaveCommand}" />
-            <Button Text="Cancel" Command="{Binding CancelCommand}" />
+        <HorizontalStackLayout Spacing="10">
+            <Button WidthRequest="120" StyleClass="btn-success" Text="Create" Command="{Binding SaveCommand}" />
+            <Button WidthRequest="120" StyleClass="btn-secondary" Text="Cancel" Command="{Binding CancelCommand}" />
         </HorizontalStackLayout>
 
     </VerticalStackLayout>

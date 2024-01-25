@@ -19,11 +19,6 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
 
         BLC.BLC blc = BLC.BLC.GetInstance();
 
-        public ProducerDetailsViewModel()
-        {
-            
-        }
-
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             int? producerId = query["id"] as int?;
@@ -42,7 +37,7 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         [RelayCommand]
         public async void Back()
         {
-            await Shell.Current.GoToAsync("///ProducersIndex");
+            await Shell.Current.Navigation.PopAsync();
         }
 
     }
