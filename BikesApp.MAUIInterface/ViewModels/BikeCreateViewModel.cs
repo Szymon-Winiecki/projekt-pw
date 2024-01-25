@@ -64,7 +64,7 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
 
         private bool CanSave()
         {
-            return !string.IsNullOrWhiteSpace(Bike?.Name) && Bike.ReleaseYear > 1700;
+            return !Bike.GetErrors().Any();
         }
 
         private void OnBikePropertyChanged(object? sender, PropertyChangedEventArgs e)

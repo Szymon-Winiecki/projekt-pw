@@ -46,11 +46,7 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
 
         private bool CanSave()
         {
-            if (NewProducer.GetErrors().Any())
-            {
-                return false;
-            }
-            return true;
+            return !NewProducer.GetErrors().Any();
         }
 
         private void OnProducerPropertyChanged(object? sender, PropertyChangedEventArgs e)

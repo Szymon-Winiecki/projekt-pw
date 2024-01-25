@@ -15,24 +15,27 @@
     <VerticalStackLayout Spacing="20" StyleClass="main-container">
 
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
-          ColumnDefinitions="100,200"
+          ColumnDefinitions="100,200,Auto"
           StyleClass="properties-grid">
             <Label StyleClass="property-name" Grid.Column="0" Grid.Row="0" Text="Id" />
             <Label Grid.Column="1" Grid.Row="0" Text="{Binding Bike.Id}" />
 
             <Label StyleClass="property-name" Grid.Column="0" Grid.Row="1" Text="Name" />
             <Entry Grid.Column="1" Grid.Row="1" Text="{Binding Bike.Name}" />
+            <Label StyleClass="error-text" VerticalTextAlignment="Center" Grid.Column="2" Grid.Row="1" Text="{Binding Bike.NameErrors}" />
 
             <Label StyleClass="property-name" Grid.Column="0" Grid.Row="2" Text="Type" />
             <Picker Grid.Column="1" Grid.Row="2" SelectedIndex="{Binding Bike.Type, Converter={StaticResource EnumToIntConverter}, ConverterParameter={x:Type interfaces:BikeType}}" ItemsSource="{Binding Types}">
             </Picker>
 
-            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="3" Text="ReleaseYear" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="3" Text="Release year" />
             <Entry Grid.Column="1" Grid.Row="3" Text="{Binding Bike.ReleaseYear}" />
+            <Label StyleClass="error-text" VerticalTextAlignment="Center" Grid.Column="2" Grid.Row="3" Text="{Binding Bike.ReleaseYearErrors}" />
 
             <Label StyleClass="property-name" Grid.Column="0" Grid.Row="4" Text="Producer" />
             <Picker Grid.Column="1" Grid.Row="4" SelectedItem="{Binding Bike.Producer}" ItemsSource="{Binding Producers}" ItemDisplayBinding="{Binding Name}">
             </Picker>
+            <Label StyleClass="error-text" VerticalTextAlignment="Center" Grid.Column="2" Grid.Row="4" Text="{Binding Bike.ProducerErrors}" />
         </Grid>
         <HorizontalStackLayout Spacing="10">
             <Button WidthRequest="120" StyleClass="btn-success" Text="Save"  Command="{Binding SaveCommand}" />

@@ -86,7 +86,6 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
             await Shell.Current.GoToAsync(nameof(ProducerDeletePage), query);
         }
 
-        // function that prints errors into the debug output
         private void OnProducerErrorsChanged(object? sender, DataErrorsChangedEventArgs e)
         { 
             var errors = GetErrors(e.PropertyName);

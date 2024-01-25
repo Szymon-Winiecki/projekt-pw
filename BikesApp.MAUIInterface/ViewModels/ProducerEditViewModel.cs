@@ -66,11 +66,7 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
                 return false;
             }
 
-            if (Producer.GetErrors().Any())
-            {
-                return false;
-            }
-            return true;
+            return !Producer.GetErrors().Any();
         }
 
         private void OnProducerPropertyChanged(object? sender, PropertyChangedEventArgs e)
