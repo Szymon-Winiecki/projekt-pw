@@ -32,12 +32,18 @@ namespace SztuderWiniecki.BikesApp.DAOMock1
 
         public IBike? AddBike(IBike bike)
         {
-            throw new NotImplementedException();
+            bikes.Add(bike);
+            int lastId = bikes.Max(b => b.Id);  
+            bike.Id = lastId + 1;
+            return bike;
         }
 
         public IProducer? AddProducer(IProducer producer)
         {
-            throw new NotImplementedException();
+            producers.Add(producer);
+            int lastId = producers.Max(p => p.Id);
+            producer.Id = lastId + 1;
+            return producer;
         }
 
         public IBike CreateNewBike()
@@ -62,37 +68,61 @@ namespace SztuderWiniecki.BikesApp.DAOMock1
 
         public IBike? GetBike(int ID)
         {
-            return bikes.First(b => b.Id == ID);
+            return bikes.FirstOrDefault(b => b.Id == ID);
         }
 
         public IProducer? GetProducer(int ID)
         {
-            throw new NotImplementedException();
+            return producers.FirstOrDefault(p => p.Id == ID);
         }
 
         public IBike? RemoveBike(int ID)
         {
-            throw new NotImplementedException();
+            IBike? bikeToRemove = bikes.FirstOrDefault(b => b.Id == ID);
+            if(bikeToRemove == null)
+            {
+                return null;
+            }
+            bikes.Remove(bikeToRemove);
+            return bikeToRemove;
         }
 
         public IProducer? RemoveProducer(int ID)
         {
-            throw new NotImplementedException();
-        }
-
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
+            IProducer? producerToRemove = producers.FirstOrDefault(p => p.Id == ID);
+            if (producerToRemove == null)
+            {
+                return null;
+            }
+            producers.Remove(producerToRemove);
+            return producerToRemove;
         }
 
         public IBike? UpdateBike(IBike bike)
         {
-            throw new NotImplementedException();
+            IBike? bikeToUpdate = bikes.FirstOrDefault(b => b.Id == bike.Id);
+            if(bikeToUpdate == null)
+            {
+                return null;
+            }
+            bikeToUpdate.CopyFrom(bike);
+            return bikeToUpdate;
         }
 
         public IProducer? UpdateProducer(IProducer producer)
         {
-            throw new NotImplementedException();
+            IProducer? producerToUpdate = producers.FirstOrDefault(p => p.Id == producer.Id);
+            if (producerToUpdate == null)
+            {
+                return null;
+            }
+            producerToUpdate.CopyFrom(producer);
+            return producerToUpdate;
+        }
+
+        public void SaveChanges()
+        {
+            return;
         }
     }
 }

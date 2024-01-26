@@ -49,14 +49,12 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
         }
         public IProducer? UpdateProducer(IProducer producer)
         {
-            // write a code to updat producer in db
             BO.Producer? dbProducer = producer as BO.Producer;
             if(dbProducer == null)
             {
                 System.Diagnostics.Debug.WriteLine("UpdateProducer: producer is not of type BO.Producer");
                 return null ;
             }
-            System.Diagnostics.Debug.WriteLine("UpdateProducer: producer is of type BO.Producer");
             return db.Producers.Update(dbProducer).Entity;
         }
         public IProducer? RemoveProducer(int ID)
@@ -72,7 +70,6 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
                 System.Diagnostics.Debug.WriteLine("AddProducer: producer is not of type BO.Producer");
                 return null;
             }
-            System.Diagnostics.Debug.WriteLine("AddProducer: producer is of type BO.Producer");
             return db.Producers.Add(dbProducer).Entity;
         }
 
@@ -96,7 +93,6 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
                 System.Diagnostics.Debug.WriteLine("UpdateBike: bike is not of type BO.Bike");
                 return null;
             }
-            System.Diagnostics.Debug.WriteLine("UpdateBike: bike is of type BO.Bike");
             return db.Bikes.Update(dbBike).Entity;
         }
         public IBike? RemoveBike(int ID)
@@ -112,7 +108,6 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
                 System.Diagnostics.Debug.WriteLine("AddBike: bike is not of type BO.Bike");
                 return null;
             }
-            System.Diagnostics.Debug.WriteLine("AddBike: bike is of type BO.Bike");
             return db.Bikes.Add(dbBike).Entity;
         }
 
