@@ -19,8 +19,9 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
 
             if (!db.Producers.Any())
             {
-                db.Producers.Add(new BO.Producer() { Name = "SQLite Producer 1", Address = "Lorem ipsum" });
-                db.Producers.Add(new BO.Producer() { Name = "SQLite Producer 2", Address = "Lorem ipsum" });
+                db.Producers.Add(new BO.Producer() { Name = "Haibike", Address = "Akacjowa 2" });
+                db.Producers.Add(new BO.Producer() { Name = "Winora", Address = "Różana 7" });
+                db.Producers.Add(new BO.Producer() { Name = "Romet", Address = "Krokusowa 12/3" });
                 db.SaveChanges();
             }
 
@@ -28,9 +29,11 @@ namespace SztuderWiniecki.BikesApp.DAO_EF_SQLite
             {
                 var producers = db.Producers.ToList();
 
-                db.Bikes.Add(new BO.Bike() { Producer = producers[0], Name = "SQLte Bike 1.0", ReleaseYear = 2020, Type = BikeType.Gravel });
-                db.Bikes.Add(new BO.Bike() { Producer = producers[1], Name = "SQLte Bike 2.0", ReleaseYear = 2023, Type = BikeType.City });
-                db.Bikes.Add(new BO.Bike() { Producer = producers[0], Name = "SQLte Bike 3.0", ReleaseYear = 1998, Type = BikeType.Folding });
+                db.Bikes.Add(new BO.Bike() { Producer = producers[0], Name = "Tria 7", ReleaseYear = 2020, Type = BikeType.Mountain });
+                db.Bikes.Add(new BO.Bike() { Producer = producers[1], Name = "E_Flitzer", ReleaseYear = 2023, Type = BikeType.Folding });
+                db.Bikes.Add(new BO.Bike() { Producer = producers[2], Name = "Monsun", ReleaseYear = 1998, Type = BikeType.Mountain });
+                db.Bikes.Add(new BO.Bike() { Producer = producers[2], Name = "Gazela", ReleaseYear = 2017, Type = BikeType.City });
+                db.Bikes.Add(new BO.Bike() { Producer = producers[2], Name = "Rombler", ReleaseYear = 2014, Type = BikeType.Gravel });
                 db.SaveChanges();
             }
         }

@@ -104,8 +104,6 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
             var errors = GetErrors(e.PropertyName);
             string errorsString = string.Join(", ", errors);
 
-            System.Diagnostics.Debug.WriteLine(errorsString);
-
             if(e.PropertyName == nameof(Name))
             {
                 NameErrors = errorsString;

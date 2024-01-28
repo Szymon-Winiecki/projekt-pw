@@ -27,7 +27,7 @@
             <Label StyleClass="property-name" Grid.Column="0" Grid.Row="2" Text="Producer" />
             <Label Grid.Column="1" Grid.Row="2" Text="{Binding Producer.Name}" />
 
-            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="3" Text="ReleaseYear" />
+            <Label StyleClass="property-name" Grid.Column="0" Grid.Row="3" Text="Release year" />
             <Label Grid.Column="1" Grid.Row="3" Text="{Binding ReleaseYear}" />
 
             <Label StyleClass="property-name" Grid.Column="0" Grid.Row="4" Text="Type" />

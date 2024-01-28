@@ -101,15 +101,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    System.Diagnostics.Debug.WriteLine("DbUpdateConcurrencyException");
-                    /*if (!BikeExists(bike.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }*/
+                    return NotFound();
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -175,15 +167,7 @@ namespace SztuderWiniecki.BikesApp.WebInterface.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    System.Diagnostics.Debug.WriteLine("DbUpdateConcurrencyException");
-                    /*if (!BikeExists(bike.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }*/
+                    return NotFound();
                 }
                 return RedirectToAction(nameof(Index));
             }

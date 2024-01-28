@@ -105,7 +105,9 @@ namespace SztuderWiniecki.BikesApp.DAOMock1
             {
                 return null;
             }
+            int id = bikeToUpdate.Id;
             bikeToUpdate.CopyFrom(bike);
+            bikeToUpdate.Id = id;
             return bikeToUpdate;
         }
 
@@ -116,7 +118,9 @@ namespace SztuderWiniecki.BikesApp.DAOMock1
             {
                 return null;
             }
+            int id = producerToUpdate.Id;
             producerToUpdate.CopyFrom(producer);
+            producerToUpdate.Id = id;
             return producerToUpdate;
         }
 

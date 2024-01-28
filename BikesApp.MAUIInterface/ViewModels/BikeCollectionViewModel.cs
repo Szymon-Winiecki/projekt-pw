@@ -52,9 +52,6 @@ namespace SztuderWiniecki.BikesApp.MAUIInterface.ViewModels
         [RelayCommand]
         private void Search()
         {
-            //write a code that will print SelectedType in output debug window
-            System.Diagnostics.Debug.WriteLine(SelectedType);
-
             bikes.Clear();
 
             IEnumerable<IBike> daoBikes = blc.GetBikes();

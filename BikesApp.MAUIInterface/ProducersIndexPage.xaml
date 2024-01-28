@@ -43,6 +43,8 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Text="Add Producer" WidthRequest="120" StyleClass="btn-primary" Command="{Binding CreateNewProducerCommand}"/>
+        <HorizontalStackLayout>
+            <Button Text="Add Producer" WidthRequest="120" StyleClass="btn-primary" Command="{Binding CreateNewProducerCommand}"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
